@@ -26,7 +26,7 @@ def test_clean_filters_and_derives_fields():
     assert list(d["animal_id"]) == ["A1", "A2", "A3"]  # cats and duplicates removed
     assert d.loc[0, "days"] == 10 and d.loc[0, "adopted"]
     assert d.loc[1, "sex_base"] == "female" and d.loc[1, "altered"]
-    assert d.loc[2, "censored"] and d.loc[2, "outcome"] is None
+    assert d.loc[2, "censored"] and pd.isna(d.loc[2, "outcome"])
     assert d.loc[2, "days"] == 6  # open stay runs to the last outcome date in the data
     assert d.loc[0, "age_group"] == "1-3 years"
 
